@@ -6,4 +6,8 @@
     url: "{{ url }}"
   with_items:
     - build-pipeline-plugin
+    - sonar
+    - docker-plugin
+    - docker-slaves
   notify: restart jenkins
+
