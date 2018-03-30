@@ -1,0 +1,9 @@
+---
+- hosts: local
+  user: dev
+  become: yes
+  tasks:
+  - name: variable
+    setup: filter=inventory_hostname
+    register: info
+  - debug: var=info

@@ -1,0 +1,3 @@
+--- #Install GIT
+- name: install git
+  yum: name=git state=present

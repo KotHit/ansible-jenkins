@@ -1,0 +1,15 @@
+--- #Install nginx
+
+- name: install nginx
+  yum: name=nginx state=present
+
+#Copy jinja template in conf file with ip_address
+- name: Copy nginx configuration in place.
+  template:
+    src: "{{ nginx_conf_template }}"
+    dest: "{{ nginx_conf_file_path }}"
+  notify:
+    - reload nginx
+#Allow HTTP traffic with selinux
+- name: allow daemons to connect to the service
+  command: setsebool -P httpd_can_network_connect on

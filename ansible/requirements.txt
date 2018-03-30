@@ -1,0 +1,15 @@
+@Pavlo_kudrynskyi
+
+- ansible-version: 2.4.2.0
+
+- inventory file /etc/ansible/hosts:
+  [local]
+  localhost ansible_connection=local
+
+
+- Installed: 
+  - git: version 1.8.3.1
+  - java: openjdk version "1.8.0_161"
+  - jenkins: jenkins-2.113-1.1 (redhat-release)
+  - nginx: nginx/1.12.2
+  - Docker version 1.13.1, build 774336d/1.13.1
