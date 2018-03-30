@@ -1,0 +1,5 @@
+--- #Install Docker-compose
+
+- name: hostname and 
+- name: install docker-compose
+  yum: name=git state=present

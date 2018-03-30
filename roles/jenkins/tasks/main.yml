@@ -1,0 +1,38 @@
+--- #Installing Jenkins
+
+- name: download repo
+  get_url:
+    url: "{{ repo_url }}"
+    dest: "{{ repo_path }}"
+
+- name: import jenkins key
+  rpm_key:
+    state: present
+    key: "{{ rpm_key }}"
+  become: true
+
+- name: install jenkins
+  yum: name=jenkins state=present
+
+- name: Enable and start jenkins
+  systemd:
+    name: jenkins
+    enabled: True
+    state: restarted
+
+#Configuring firewalld ports for Jenkins
+- name: allow port via firewalld
+  firewalld:
+    zone: public
+    port: 8080/tcp
+    permanent: true
+    state: enabled
+
+- name: allow http traffic
+  firewalld:
+    zone: public
+    service: http
+    permanent: true
+    state: enabled
+  notify:
+    - restart firewalld 

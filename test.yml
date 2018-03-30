@@ -1,0 +1,6 @@
+--- #Test
+- hosts: local
+  become: yes
+  user: dev
+  roles:
+    - docker

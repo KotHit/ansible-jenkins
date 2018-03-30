@@ -1,0 +1,8 @@
+--- #Install Docker and Docker-compose
+
+- name: install Docker
+  yum: name=docker state=present
+  notify: restart docker
+- name: install docker compose
+  yum: name=docker-compose state=present
+  

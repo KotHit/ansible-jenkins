@@ -1,0 +1,10 @@
+--- #Installing git, epel-release, javaJDK, Jenkins (no activation), nginx (:80)
+- hosts: local
+  become: yes
+  user: dev
+  roles:
+    - git
+    - java
+    - jenkins
+    - nginx
+    - docker
