@@ -1,0 +1,6 @@
+---
+- hosts: samba_server
+  become: true
+  roles: 
+    - jenkins
+    - docker

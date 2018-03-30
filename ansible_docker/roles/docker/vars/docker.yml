@@ -1,0 +1,6 @@
+---
+ link_repo: https://download.docker.com/linux/centos/7/x86_64
+ channel: stable
+ docker_version: 18.03.0
+ docker_package_state: installed
+ rotate_home: var/lib/docker/containers

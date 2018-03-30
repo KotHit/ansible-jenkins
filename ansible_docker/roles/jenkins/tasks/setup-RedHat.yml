@@ -1,0 +1,39 @@
+---
+- name: Install epel-release
+  yum: 
+    name: epel-release
+    state: present
+- name: Ensure dependencies are installed.
+  package:
+    name:
+      - curl
+      - libselinux-python
+      - vim
+      - git
+      - htop
+    state: installed
+
+- name: Ensure Jenkins repo is installed.
+  get_url:
+    url: "{{ jenkins_repo_url }}"
+    dest: /etc/yum.repos.d/jenkins.repo
+  when: jenkins_repo_url != ''
+- name: Add Jenkins repo GPG key.
+  rpm_key:
+    state: present
+    key: "{{ jenkins_repo_key_url }}"
+- name: Install java 
+  yum:
+    name: java-1.8.0-openjdk
+    state: present
+- name: Install Jenkins
+  yum:
+    name: jenkins
+    state: latest
+- name: Enable Jenkins
+  systemd: 
+    name: jenkins
+    state: started
+    enabled: yes
+  notify: restart jenkins
+- include_tasks: nginx.yml

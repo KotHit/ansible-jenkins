@@ -1,0 +1,9 @@
+{{rotate_home}}/*/*.log {
+  rotate 14
+  daily
+  compress
+  size=100M
+  missingok
+  delaycompress
+  copytruncate
+}

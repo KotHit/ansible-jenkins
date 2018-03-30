@@ -1,0 +1,32 @@
+---
+- name: Include  variables
+  include_vars: "docker.yml"
+- name: Debug
+  debug:
+    msg: "{{ link_repo }}/{{ channel }}/Packages/docker-ce-{{ docker_version }}.ce-1.el7.centos.x86_64.rpm" 
+- name: Download specific docker version.
+  get_url:
+    url: "{{ link_repo }}/{{ channel }}/Packages/docker-ce-{{ docker_version }}.ce-1.el7.centos.x86_64.rpm"
+    dest: "/tmp/docker-ce-{{ docker_version }}.ce-1.el7.centos.x86_64.rpm"
+  when: docker_version is defined
+
+- name: Check if we downloaded a specific version of docker.
+  stat:
+    path: "/tmp/docker-ce-{{ docker_version }}.ce-1.el7.centos.x86_64.rpm"
+  register: specific_version
+  when: docker_version is defined
+
+- name: Install our specific version of Jenkins.
+  package:
+    name: "/tmp/docker-ce-{{ docker_version }}.ce-1.el7.centos.x86_64.rpm"
+    state: "{{ docker_package_state }}"
+  when: docker_version is defined and specific_version.stat.exists
+- name: Ensure that docker is enabled
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+- name: Install docker compose from epel-release
+  package:
+    name: docker-compose
+    state: "{{ docker_package_state }}"

@@ -1,0 +1,8 @@
+---
+
+- include_tasks: setup-docker.yml
+
+- name: Configuration logrotates for docker
+  template:
+    src: templates/docker-rotate.jb2
+    dest: "{{ home_rotate }}/docker-rotate"
