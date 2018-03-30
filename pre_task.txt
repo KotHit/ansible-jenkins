@@ -1,0 +1,4 @@
+[ansible-jenkins]
+1. Install ansible, change inventory file
+2. Change ip variable in /ansible/ansible-jenkins/roles/nginx/vars/main.yml
+3. Install Jenkins ansible-playbook playbook.yml 
