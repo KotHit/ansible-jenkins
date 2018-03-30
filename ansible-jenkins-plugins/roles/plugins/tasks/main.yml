@@ -1,0 +1,9 @@
+- name: Install plugin
+  jenkins_plugin:
+    name: "{{ item }}"
+    url_username: "{{ url_username }}"
+    url_password: "{{ url_password }}"
+    url: "{{ url }}"
+  with_items:
+    - build-pipeline-plugin
+  notify: restart jenkins

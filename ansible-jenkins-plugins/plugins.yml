@@ -1,0 +1,6 @@
+--- # Main 
+- hosts: local
+  user: dev
+  become: yes
+  roles:
+  - plugins
