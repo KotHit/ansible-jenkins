@@ -6,8 +6,8 @@
 - name: Ensure dependencies are installed.
   package:
     name:
-      - curl
       - libselinux-python
+      - libsemanage-python
       - vim
       - git
       - htop
