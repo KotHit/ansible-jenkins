@@ -1,3 +1,9 @@
+--- #Install plugins and create directories for thinBackup plugin
+- name: Create directories
+  file:
+    path: /apps/jenkins_backup
+    owner: jenkins
+    group: jenkins
 - name: Install plugin
   jenkins_plugin:
     name: "{{ item }}"
@@ -9,5 +15,6 @@
     - sonar
     - docker-plugin
     - docker-slaves
+    - thinBackup
   notify: restart jenkins
 
