@@ -4,6 +4,7 @@
     path: /apps/jenkins_backup
     owner: jenkins
     group: jenkins
+    state: directory
 - name: Install plugin
   jenkins_plugin:
     name: "{{ item }}"
