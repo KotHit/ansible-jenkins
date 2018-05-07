@@ -26,6 +26,8 @@
   yum:
     name: java-1.8.0-openjdk
     state: present
+- name: export var
+  shell: "echo export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre >> /etc/environment"
 - name: Install Jenkins
   yum:
     name: jenkins
@@ -36,4 +38,3 @@
     state: started
     enabled: yes
   notify: restart jenkins
-- include_tasks: nginx.yml

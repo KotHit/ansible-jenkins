@@ -1,2 +1,2 @@
 [samba_server]
-samba	 ansible_host=192.168.50.2	ansible_user=root 	ansible_connection=local
+samba	 ansible_host=192.168.50.4	ansible_user=root 	ansible_connection=local
